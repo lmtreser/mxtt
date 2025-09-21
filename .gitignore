@@ -1,0 +1,16 @@
+# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Carpeta de entornos virtuales
+venv/
+env/
+
+# Archivos PyInstaller
+dist/
+build/
+*.spec
+
+# Archivos de sistema
+.DS_Store
