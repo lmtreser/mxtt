@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QWidget
-from mxtt_ui import Ui_Form
+from .ui/mxtt_ui import Ui_Form
 from mxtt_driver import MXTTDriver
 
 class MainWindow(QWidget):
