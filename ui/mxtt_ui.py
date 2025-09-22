@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout,
     QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QTabWidget, QVBoxLayout,
-    QWidget)
+    QPlainTextEdit, QPushButton, QSizePolicy, QTabWidget,
+    QVBoxLayout, QWidget)
 import ui.resources_rc
 
 class Ui_Form(object):
@@ -164,15 +164,26 @@ class Ui_Form(object):
         self.tab_broker.addTab(self.tab_2, "")
         self.tab_debug = QWidget()
         self.tab_debug.setObjectName(u"tab_debug")
-        self.label_6 = QLabel(self.tab_debug)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(80, 40, 158, 78))
+        self.verticalLayout_5 = QVBoxLayout(self.tab_debug)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.pte_debug = QPlainTextEdit(self.tab_debug)
+        self.pte_debug.setObjectName(u"pte_debug")
+        self.pte_debug.setReadOnly(True)
+
+        self.verticalLayout_5.addWidget(self.pte_debug)
+
         self.tab_broker.addTab(self.tab_debug, "")
         self.tab_about = QWidget()
         self.tab_about.setObjectName(u"tab_about")
+        self.verticalLayout_4 = QVBoxLayout(self.tab_about)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.label_7 = QLabel(self.tab_about)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setGeometry(QRect(90, 80, 361, 18))
+        self.label_7.setTextFormat(Qt.MarkdownText)
+        self.label_7.setWordWrap(True)
+
+        self.verticalLayout_4.addWidget(self.label_7)
+
         self.tab_broker.addTab(self.tab_about, "")
 
         self.verticalLayout.addWidget(self.tab_broker)
@@ -191,7 +202,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tab_broker.setCurrentIndex(3)
+        self.tab_broker.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -213,9 +224,8 @@ class Ui_Form(object):
         self.pb_config_save.setText(QCoreApplication.translate("Form", u"Save Config", None))
         self.pb_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Broker", None))
-        self.label_6.setText(QCoreApplication.translate("Form", u"...", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_debug), QCoreApplication.translate("Form", u"Debug", None))
-        self.label_7.setText(QCoreApplication.translate("Form", u"https://github.com/lmtreser/mxtt", None))
+        self.label_7.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">MXTT MQTT Explorer</span></p><p>Aplicaci\u00f3n de escritorio para monitoreo y control de sistemas IoT mediante MQTT, desarrollada en Python con <span style=\" font-style:italic;\">PySide6 / Qt6</span>.</p><p>MXTT es una herramienta educativa y de prototipado r\u00e1pido que permite: conectar dispositivos IoT v\u00eda MQTT, visualizar datos en tiempo real, controlar actuadores mediante una interfaz gr\u00e1fica moderna.</p><p><span style=\" text-decoration: underline;\">Licencia</span></p><p>Proyecto desarrollado bajo licencia MIT. Compatible con PySide6 (LGPL), libre para proyectos comerciales o educativos.</p><p align=\"center\"><a href=\"https://github.com/lmtreser/mxtt\"><span style=\" font-weight:600; text-decoration: underline; color:#1d99f3;\">Proyecto en GitHub</span></a></p></body></html>", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_about), QCoreApplication.translate("Form", u"About", None))
     # retranslateUi
 
