@@ -13,4 +13,5 @@ build/
 *.spec
 
 # Archivos de sistema
+*.log
 .DS_Store
