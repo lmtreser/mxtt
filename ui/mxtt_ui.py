@@ -30,32 +30,6 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.tab_broker = QTabWidget(Form)
         self.tab_broker.setObjectName(u"tab_broker")
-        self.tab_messages = QWidget()
-        self.tab_messages.setObjectName(u"tab_messages")
-        self.tab_messages.setMinimumSize(QSize(558, 0))
-        self.verticalLayout_3 = QVBoxLayout(self.tab_messages)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.listView_msg = QListWidget(self.tab_messages)
-        self.listView_msg.setObjectName(u"listView_msg")
-
-        self.verticalLayout_3.addWidget(self.listView_msg)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.input_send_msg = QLineEdit(self.tab_messages)
-        self.input_send_msg.setObjectName(u"input_send_msg")
-
-        self.horizontalLayout_2.addWidget(self.input_send_msg)
-
-        self.pb_send = QPushButton(self.tab_messages)
-        self.pb_send.setObjectName(u"pb_send")
-
-        self.horizontalLayout_2.addWidget(self.pb_send)
-
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-
-        self.tab_broker.addTab(self.tab_messages, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.verticalLayout_2 = QVBoxLayout(self.tab_2)
@@ -162,6 +136,32 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.tab_broker.addTab(self.tab_2, "")
+        self.tab_messages = QWidget()
+        self.tab_messages.setObjectName(u"tab_messages")
+        self.tab_messages.setMinimumSize(QSize(558, 0))
+        self.verticalLayout_3 = QVBoxLayout(self.tab_messages)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.listView_msg = QListWidget(self.tab_messages)
+        self.listView_msg.setObjectName(u"listView_msg")
+
+        self.verticalLayout_3.addWidget(self.listView_msg)
+
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.input_send_msg = QLineEdit(self.tab_messages)
+        self.input_send_msg.setObjectName(u"input_send_msg")
+
+        self.horizontalLayout_2.addWidget(self.input_send_msg)
+
+        self.pb_send = QPushButton(self.tab_messages)
+        self.pb_send.setObjectName(u"pb_send")
+
+        self.horizontalLayout_2.addWidget(self.pb_send)
+
+
+        self.verticalLayout_3.addLayout(self.horizontalLayout_2)
+
+        self.tab_broker.addTab(self.tab_messages, "")
         self.tab_debug = QWidget()
         self.tab_debug.setObjectName(u"tab_debug")
         self.verticalLayout_5 = QVBoxLayout(self.tab_debug)
@@ -208,7 +208,7 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
 
-        self.tab_broker.setCurrentIndex(2)
+        self.tab_broker.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Form)
@@ -216,9 +216,6 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"MXTT", None))
-        self.input_send_msg.setPlaceholderText(QCoreApplication.translate("Form", u"topic : value", None))
-        self.pb_send.setText(QCoreApplication.translate("Form", u"Send", None))
-        self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_messages), QCoreApplication.translate("Form", u"Messages", None))
         self.input_port.setPlaceholderText(QCoreApplication.translate("Form", u"1883", None))
         self.check_tls.setText(QCoreApplication.translate("Form", u"TLS", None))
         self.label_3.setText(QCoreApplication.translate("Form", u"User", None))
@@ -230,6 +227,9 @@ class Ui_Form(object):
         self.pb_config_save.setText(QCoreApplication.translate("Form", u"Save Config", None))
         self.pb_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Broker", None))
+        self.input_send_msg.setPlaceholderText(QCoreApplication.translate("Form", u"topic : value", None))
+        self.pb_send.setText(QCoreApplication.translate("Form", u"Send", None))
+        self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_messages), QCoreApplication.translate("Form", u"Messages", None))
         self.check_log_to_file.setText(QCoreApplication.translate("Form", u"Log to File", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_debug), QCoreApplication.translate("Form", u"Debug", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">MXTT MQTT Explorer</span></p><p>Aplicaci\u00f3n de escritorio para monitoreo y control de sistemas IoT mediante MQTT, desarrollada en Python con <span style=\" font-style:italic;\">PySide6 / Qt6</span>.</p><p>MXTT es una herramienta educativa y de prototipado r\u00e1pido que permite: conectar dispositivos IoT v\u00eda MQTT, visualizar datos en tiempo real, controlar actuadores mediante una interfaz gr\u00e1fica moderna.</p><p><span style=\" text-decoration: underline;\">Licencia</span></p><p>Proyecto desarrollado bajo licencia MIT. Compatible con PySide6 (LGPL), libre para proyectos comerciales o educativos.</p><p align=\"center\"><a href=\"https://github.com/lmtreser/mxtt\"><span style=\" font-weight:600; text-decoration: underline; color:#1d99f3;\">Proyecto en GitHub</span></a></p></body></html>", None))

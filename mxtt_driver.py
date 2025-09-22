@@ -7,8 +7,9 @@ class MXTTDriver:
     Maneja los eventos de los botones y actualiza la interfaz.    
     """
 
-    def __init__(self, view):
+    def __init__(self, view, settings):
         self.view = view
+        self.settings = settings
         self.mqtt_client = None
     
         # Input fields, topic config
@@ -18,6 +19,8 @@ class MXTTDriver:
         self.view.ui.pb_config_save.clicked.connect(self.save_config)
         # Tab Messages
         self.view.ui.pb_send.clicked.connect(self.send_message)
+        # Cargar configuración guardada
+        self.load_config()
 
     def subscribe_to_topic(self):
         """
@@ -58,6 +61,25 @@ class MXTTDriver:
         Guarda la configuración del cliente en un archivo.
         """
         debug("[DRIVER] Saving config...")
+        self.settings.save_broker(
+            url=self.view.ui.input_url.text(),
+            port=int(self.view.ui.input_port.text()),
+            tls=self.view.ui.check_tls.isChecked(),
+            username=self.view.ui.input_user.text(),
+            password=self.view.ui.input_password.text()
+        )
+    
+    def load_config(self):
+        """
+        Carga la configuración del cliente desde un archivo.
+        """
+        debug("[SETTINGS] Loading config...")
+        cfg_stored = self.settings.load_broker()
+        self.view.ui.input_url.setText(cfg_stored["url"])
+        self.view.ui.input_port.setText(cfg_stored["port"])
+        self.view.ui.check_tls.setChecked(cfg_stored["tls"] in [True, 'true', '1'])
+        self.view.ui.input_user.setText(cfg_stored["username"])
+        self.view.ui.input_password.setText(cfg_stored["password"])
         
     def connect_to_broker(self):
         """

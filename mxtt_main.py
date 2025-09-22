@@ -4,15 +4,18 @@ from PySide6.QtGui import QIcon
 from ui.mxtt_ui import Ui_Form
 from mxtt_driver import MXTTDriver
 from debug import set_debug_callback
+from mxtt_settings import MXTTSettings
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Form()
         self.ui.setupUi(self)
-        self.mqtt_driver = MXTTDriver(self)
-        set_debug_callback(self.append_debug)
         self.setWindowIcon(QIcon(":/icons/mqtt.svg"))
+        
+        self.app_settings = MXTTSettings()
+        self.mqtt_driver = MXTTDriver(self, self.app_settings)
+        set_debug_callback(self.append_debug)
 
     def append_debug(self, text):
         """Agrega una línea al tab Debug."""

@@ -17,42 +17,8 @@
    <item>
     <widget class="QTabWidget" name="tab_broker">
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="tab_messages">
-      <property name="minimumSize">
-       <size>
-        <width>558</width>
-        <height>0</height>
-       </size>
-      </property>
-      <attribute name="title">
-       <string>Messages</string>
-      </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QListWidget" name="listView_msg"/>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLineEdit" name="input_send_msg">
-           <property name="placeholderText">
-            <string>topic : value</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pb_send">
-           <property name="text">
-            <string>Send</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="tab_2">
       <attribute name="title">
        <string>Broker</string>
@@ -199,6 +165,40 @@
            </property>
            <property name="text">
             <string>Connect</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_messages">
+      <property name="minimumSize">
+       <size>
+        <width>558</width>
+        <height>0</height>
+       </size>
+      </property>
+      <attribute name="title">
+       <string>Messages</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QListWidget" name="listView_msg"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="input_send_msg">
+           <property name="placeholderText">
+            <string>topic : value</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pb_send">
+           <property name="text">
+            <string>Send</string>
            </property>
           </widget>
          </item>
