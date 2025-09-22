@@ -21,7 +21,7 @@ class MQTTClient(QThread):
     def __init__(self, url, port, username, password, use_tls=False):
         super().__init__()
         self.broker = url
-        self.port = port
+        self.port = int(port)
         self.username = username
         self.password = password
         self.use_tls = use_tls
