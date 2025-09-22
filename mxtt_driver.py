@@ -76,7 +76,7 @@ class MXTTDriver:
         debug("[SETTINGS] Loading config...")
         cfg_stored = self.settings.load_broker()
         self.view.ui.input_url.setText(cfg_stored["url"])
-        self.view.ui.input_port.setText(cfg_stored["port"])
+        self.view.ui.input_port.setText(str(cfg_stored["port"]))
         self.view.ui.check_tls.setChecked(cfg_stored["tls"] in [True, 'true', '1'])
         self.view.ui.input_user.setText(cfg_stored["username"])
         self.view.ui.input_password.setText(cfg_stored["password"])
