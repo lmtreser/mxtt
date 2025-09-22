@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout
     QLabel, QLineEdit, QListWidget, QListWidgetItem,
     QPushButton, QSizePolicy, QTabWidget, QVBoxLayout,
     QWidget)
+import ui.resources_rc
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -161,6 +162,18 @@ class Ui_Form(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.tab_broker.addTab(self.tab_2, "")
+        self.tab_debug = QWidget()
+        self.tab_debug.setObjectName(u"tab_debug")
+        self.label_6 = QLabel(self.tab_debug)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setGeometry(QRect(80, 40, 158, 78))
+        self.tab_broker.addTab(self.tab_debug, "")
+        self.tab_about = QWidget()
+        self.tab_about.setObjectName(u"tab_about")
+        self.label_7 = QLabel(self.tab_about)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setGeometry(QRect(90, 80, 361, 18))
+        self.tab_broker.addTab(self.tab_about, "")
 
         self.verticalLayout.addWidget(self.tab_broker)
 
@@ -172,21 +185,20 @@ class Ui_Form(object):
         QWidget.setTabOrder(self.input_topic_1, self.pb_subscribe)
         QWidget.setTabOrder(self.pb_subscribe, self.pb_config_save)
         QWidget.setTabOrder(self.pb_config_save, self.pb_connect)
-        QWidget.setTabOrder(self.pb_connect, self.tab_broker)
-        QWidget.setTabOrder(self.tab_broker, self.input_send_msg)
+        QWidget.setTabOrder(self.pb_connect, self.input_send_msg)
         QWidget.setTabOrder(self.input_send_msg, self.pb_send)
         QWidget.setTabOrder(self.pb_send, self.listView_msg)
 
         self.retranslateUi(Form)
 
-        self.tab_broker.setCurrentIndex(1)
+        self.tab_broker.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Form)
     # setupUi
 
     def retranslateUi(self, Form):
-        Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
+        Form.setWindowTitle(QCoreApplication.translate("Form", u"MXTT", None))
         self.input_send_msg.setPlaceholderText(QCoreApplication.translate("Form", u"topic : value", None))
         self.pb_send.setText(QCoreApplication.translate("Form", u"Send", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_messages), QCoreApplication.translate("Form", u"Messages", None))
@@ -201,5 +213,9 @@ class Ui_Form(object):
         self.pb_config_save.setText(QCoreApplication.translate("Form", u"Save Config", None))
         self.pb_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Broker", None))
+        self.label_6.setText(QCoreApplication.translate("Form", u"...", None))
+        self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_debug), QCoreApplication.translate("Form", u"Debug", None))
+        self.label_7.setText(QCoreApplication.translate("Form", u"https://github.com/lmtreser/mxtt", None))
+        self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_about), QCoreApplication.translate("Form", u"About", None))
     # retranslateUi
 

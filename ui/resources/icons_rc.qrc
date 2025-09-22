@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>mqtt.svg</file>
+  </qresource>
+</RCC>
