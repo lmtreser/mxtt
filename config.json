@@ -1,0 +1,10 @@
+{
+    "broker": "test.mosquitto.com",
+    "port": 1883,
+    "username": "your_username",
+    "password": "your_password",
+    "topics": [
+        "topic/one",
+        "topic/two"
+    ]
+}

@@ -1,9 +1,9 @@
-import sys
+import sys, ui.resources_rc
 from PySide6.QtWidgets import QApplication, QWidget
 from PySide6.QtGui import QIcon
 from ui.mxtt_ui import Ui_Form
 from mxtt_driver import MXTTDriver
-import ui.resources_rc
+from debug import set_debug_callback
 
 class MainWindow(QWidget):
     def __init__(self):
@@ -11,7 +11,12 @@ class MainWindow(QWidget):
         self.ui = Ui_Form()
         self.ui.setupUi(self)
         self.mqtt_driver = MXTTDriver(self)
+        set_debug_callback(self.append_debug)
         self.setWindowIcon(QIcon(":/icons/mqtt.svg"))
+
+    def append_debug(self, text):
+        """Agrega una línea al tab Debug."""
+        self.ui.pte_debug.appendPlainText(text)
         
     def closeEvent(self, event):
         """Se ejecuta automáticamente al cerrar la ventana."""

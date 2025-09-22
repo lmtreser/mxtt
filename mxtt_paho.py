@@ -81,10 +81,10 @@ class MQTTClient(QThread):
         - Entra en loop_forever() para mantener la conexión activa.
         - Hilo bloqueante.
         """
+        debug("[MQTT] Thread starting")
         try:
-            debug("[MQTT] Thread starting")
-            self.client.connect(self.broker, self.port)
-            self.client.loop_forever()
+            self.client.connect(self.broker, self.port, keepalive=30)
+            self.client.loop_forever(retry_first_connection=True)
         except Exception as e:
             debug(f"[MQTT] Connection error \'{e}\'")
     
@@ -93,6 +93,9 @@ class MQTTClient(QThread):
         Detiene el hilo y desconecta del broker.
         """
         debug("[MQTT] Stopping thread and disconnecting...")
-        self.client.disconnect()
+        try:
+            self.client.disconnect()
+        except Exception as e:
+            debug(f"[MQTT] Error on disconnect: {e}")
         self.quit()
         self.wait()

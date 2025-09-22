@@ -11,23 +11,13 @@ class MXTTDriver:
         self.view = view
         self.mqtt_client = None
     
-        # Input fields, broker config
-        self.view.ui.input_url.textChanged.connect(self.update_inputs)
-        self.view.ui.input_port.textChanged.connect(self.update_inputs)
-        self.view.ui.input_user.textChanged.connect(self.update_inputs)
-        self.view.ui.input_password.textChanged.connect(self.update_inputs)
-
         # Input fields, topic config
-        self.view.ui.input_topic_1.textChanged.connect(self.update_inputs)
-        self.view.ui.pb_subscribe.clicked.connect(self.subscribe_to_topic)
-        
+        self.view.ui.pb_subscribe.clicked.connect(self.subscribe_to_topic)        
         # Push buttons
         self.view.ui.pb_connect.clicked.connect(self.connect_to_broker)
         self.view.ui.pb_config_save.clicked.connect(self.save_config)
-        
         # Tab Messages
         self.view.ui.pb_send.clicked.connect(self.send_message)
-        self.view.ui.input_send_msg.textChanged.connect(self.update_inputs)
 
     def subscribe_to_topic(self):
         """
@@ -54,13 +44,6 @@ class MXTTDriver:
             debug(f"[DRIVER] Sent message \'{topic} : {payload}\'")
         else:
             debug("[DRIVER] Cannot send message, MQTT client not connected.")
-
-    def update_inputs(self, text):
-        """
-        Callback que se ejecuta cada vez que un input de la UI cambia.
-        Útil para debug o validación en tiempo real.
-        """
-        debug(f"[DRIVER] Inputs updated to: {text}")
     
     def update_message(self, topic, payload):
         """
@@ -97,7 +80,7 @@ class MXTTDriver:
         
     def close(self):
         """Cierra la conexión MQTT y detiene el hilo al cerrar la aplicación."""
-        debug("[DRIVER] Cerrando MXTTDriver.")
+        debug("[DRIVER] Closing MXTTDriver.")
         if self.mqtt_client:
             self.mqtt_client.stop()
             self.mqtt_client = None
