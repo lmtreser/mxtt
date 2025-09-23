@@ -22,18 +22,28 @@ La UI se creó con **Qt Designer** y se encuentra en la carpeta `ui`. Los recurs
 
 ```
 mxtt-app/
-├─ mxtt_main.py      # Script principal
+├─ mxtt_main.py             # Script principal
 ├─ ui/
-│   ├─ mxtt_ui.ui    # UI creada en Qt Designer
-│   ├─ mxtt_ui.py    # UI compilada a Python
-│   └─ resources.qrc # Recursos (iconos, imágenes)
-├─ mqtt_driver.py    # Lógica ui/mqtt/file
-├─ mxtt_paho.py      # Conexión MQTT
-├─ mxtt_file.py      # Acceso a sistema de archivos
-├─ debug.py          # Depuración mediante IceCream
-├─ README.md         # Documentación
-└─ LICENSE           # Licencia MIT
+│   ├─ resources/
+│   │     ├─ mxtt_ui.ui     # UI creada en Qt Designer
+│   │     ├─ icons_rc.qrc   # Archivo de recursos
+│   │     ├─ mqtt.ico       # Icono (ico)
+│   │     └─ mqtt.svg       # Icono (svg)
+│   ├─ __init__.py
+│   ├─ mxtt_ui.py           # UI compilada a Python
+│   └─ resources.py         # Recursos (compilado)
+├─ mqtt_driver.py           # Lógica ui/mqtt/file
+├─ mxtt_paho.py             # Conexión MQTT
+├─ mxtt_logger.py           # Depuración a archivo
+├─ mxtt_settings.py         # Almacenar y recuperar configuración
+├─ debug.py                 # Depuración mediante IceCream
+├─ README.md                # Documentación
+└─ LICENSE                  # Licencia MIT
 ```
+
+## Uso
+
+
 
 ## Licencia
 
