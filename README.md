@@ -43,7 +43,54 @@ mxtt-app/
 
 ## Uso
 
+La aplicación está dividida en varias pestañas (tabs). A saber:
 
+### Broker
+
+En esta pestaña se configuran los parámetros de conexión al broker MQTT.
+
+- URL: Dirección del broker.
+- Port: Puerto del servicio MQTT.
+- TLS: Activar esta casilla si el broker requiere conexión segura.
+- User: Usuario de autenticación (si el broker lo solicita).
+- Password: Clave asociada al usuario.
+- Topic: Tópico principal para suscribirse de manera rápida.
+- Subscribe: Botón para suscribirse al tópico ingresado.
+- Save Config: Guarda los parámetros de conexión.
+- Connect: Establece la conexión con el broker.
+
+**Ejemplo de uso**
+
+1. Ingresar `test.mosquitto.org` en **URL**.
+2. Poner puerto `1883`.
+3. Dejar sin tildar la casilla **TLS**.
+4. Presionar **Connect**.
+5. Estado de conexión listo para enviar/recibir mensajes.
+
+### Messages
+
+Aquí se administran los mensajes MQTT.
+
+- Lista de mensajes: Muestra los mensajes recibidos con sus tópicos.
+- Caja de envío: Escribir un mensaje con el formato `topic : valor`.
+- Send: Envía el mensaje al broker en el tópico indicado.
+
+**Ejemplo de uso**
+
+1. Suscribirse en la pestaña **Broker** al tópico `casa/luz`.
+2. En la pestaña **Messages**, enviar `casa/luz : OFF` (respetar espacios).
+3. El mensaje aparece en la lista junto con cualquier respuesta de otros clientes conectados.
+
+### **Debug**
+
+Sirve para depurar y revisar lo que ocurre en la comunicación.
+
+- Área de texto: Muestra logs en tiempo real (conexiones, errores, mensajes enviados/recibidos en bruto).
+- Log to File: Activa el guardado de los logs en un archivo externo.
+
+### **About**
+
+Muestra información general sobre la aplicación:
 
 ## Licencia
 
