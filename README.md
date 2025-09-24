@@ -78,7 +78,7 @@ Aquí se administran los mensajes MQTT.
 **Ejemplo de uso**
 
 1. Suscribirse en la pestaña **Broker** al tópico `casa/luz`.
-2. En la pestaña **Messages**, enviar `casa/luz : OFF` (respetar espacios).
+2. En la pestaña **Messages**, enviar `casa/luz : OFF`.
 3. El mensaje aparece en la lista junto con cualquier respuesta de otros clientes conectados.
 
 ### **Debug**
@@ -92,12 +92,17 @@ Sirve para depurar y revisar lo que ocurre en la comunicación.
 
 Muestra información general sobre la aplicación:
 
-## Licencia
+## ToDo
 
-* Proyecto desarrollado bajo **licencia MIT**.
-* Compatible con **PySide6 (LGPL)**, libre para proyectos comerciales o educativos.
+- [] Documentar
+- [] Validar inputs
 
 ## Contribuciones
 
 * Pull requests y sugerencias son bienvenidas.
 * Antes de contribuir, asegurarse de mantener compatibilidad con **Python 3.9+** y conservar la estructura de la UI en la carpeta `ui`.
+
+## Licencia
+
+* Proyecto desarrollado bajo **licencia MIT**.
+* Compatible con **PySide6 (LGPL)**, libre para proyectos comerciales o educativos.
