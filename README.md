@@ -37,6 +37,7 @@ mxtt-app/
 ├─ mxtt_logger.py           # Depuración a archivo
 ├─ mxtt_settings.py         # Almacenar y recuperar configuración
 ├─ debug.py                 # Depuración mediante IceCream
+├─ docs/                    # Documentación (html & sphinx source)
 ├─ README.md                # Documentación
 └─ LICENSE                  # Licencia MIT
 ```
