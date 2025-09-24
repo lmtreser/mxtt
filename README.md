@@ -98,7 +98,7 @@ Muestra información general sobre la aplicación:
 - [ ] Agregar botón de desconexión
 - [ ] Permitir guardar varios brokers
 - [ ] Hashear password
-- [-] Documentar
+- [x] Documentar
 
 ## Contribuciones
 
