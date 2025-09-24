@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QListWidget, QListWidgetItem,
-    QPlainTextEdit, QPushButton, QSizePolicy, QSpacerItem,
-    QTabWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QFrame, QGridLayout,
+    QHBoxLayout, QLabel, QLineEdit, QListWidget,
+    QListWidgetItem, QPlainTextEdit, QPushButton, QSizePolicy,
+    QSpacerItem, QTabWidget, QVBoxLayout, QWidget)
 import ui.resources_rc
 
 class Ui_Form(object):
@@ -98,6 +98,32 @@ class Ui_Form(object):
 
         self.verticalLayout_2.addLayout(self.gridLayout)
 
+        self.horizontalLayout = QHBoxLayout()
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.pb_config_save = QPushButton(self.tab_2)
+        self.pb_config_save.setObjectName(u"pb_config_save")
+        self.pb_config_save.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout.addWidget(self.pb_config_save)
+
+        self.pb_connect = QPushButton(self.tab_2)
+        self.pb_connect.setObjectName(u"pb_connect")
+        self.pb_connect.setMaximumSize(QSize(100, 16777215))
+        self.pb_connect.setLayoutDirection(Qt.LeftToRight)
+        self.pb_connect.setFlat(False)
+
+        self.horizontalLayout.addWidget(self.pb_connect)
+
+
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+
+        self.line = QFrame(self.tab_2)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.verticalLayout_2.addWidget(self.line)
+
         self.horizontalLayout_4 = QHBoxLayout()
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.label_5 = QLabel(self.tab_2)
@@ -117,23 +143,6 @@ class Ui_Form(object):
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_4)
-
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.pb_config_save = QPushButton(self.tab_2)
-        self.pb_config_save.setObjectName(u"pb_config_save")
-        self.pb_config_save.setMaximumSize(QSize(200, 16777215))
-
-        self.horizontalLayout.addWidget(self.pb_config_save)
-
-        self.pb_connect = QPushButton(self.tab_2)
-        self.pb_connect.setObjectName(u"pb_connect")
-        self.pb_connect.setMaximumSize(QSize(200, 16777215))
-
-        self.horizontalLayout.addWidget(self.pb_connect)
-
-
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.tab_broker.addTab(self.tab_2, "")
         self.tab_messages = QWidget()
@@ -198,6 +207,17 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.tab_broker)
 
+        self.label_status = QLabel(Form)
+        self.label_status.setObjectName(u"label_status")
+        font = QFont()
+        font.setPointSize(10)
+        font.setItalic(False)
+        self.label_status.setFont(font)
+        self.label_status.setFrameShape(QFrame.NoFrame)
+        self.label_status.setLineWidth(1)
+
+        self.verticalLayout.addWidget(self.label_status)
+
         QWidget.setTabOrder(self.input_url, self.input_port)
         QWidget.setTabOrder(self.input_port, self.check_tls)
         QWidget.setTabOrder(self.check_tls, self.input_user)
@@ -226,10 +246,10 @@ class Ui_Form(object):
         self.label.setText(QCoreApplication.translate("Form", u"URL", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"Port", None))
         self.label_4.setText(QCoreApplication.translate("Form", u"Password", None))
-        self.label_5.setText(QCoreApplication.translate("Form", u"Topic", None))
-        self.pb_subscribe.setText(QCoreApplication.translate("Form", u"Subscribe", None))
         self.pb_config_save.setText(QCoreApplication.translate("Form", u"Save Config", None))
         self.pb_connect.setText(QCoreApplication.translate("Form", u"Connect", None))
+        self.label_5.setText(QCoreApplication.translate("Form", u"Topic", None))
+        self.pb_subscribe.setText(QCoreApplication.translate("Form", u"Subscribe", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_2), QCoreApplication.translate("Form", u"Broker", None))
         self.input_send_msg.setPlaceholderText(QCoreApplication.translate("Form", u"topic : value", None))
         self.pb_send.setText(QCoreApplication.translate("Form", u"Send", None))
@@ -238,5 +258,6 @@ class Ui_Form(object):
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_debug), QCoreApplication.translate("Form", u"Debug", None))
         self.label_7.setText(QCoreApplication.translate("Form", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">MXTT MQTT Explorer</span></p><p>Aplicaci\u00f3n de escritorio para monitoreo y control de sistemas IoT mediante MQTT, desarrollada en Python con <span style=\" font-style:italic;\">PySide6 / Qt6</span>.</p><p>MXTT es una herramienta educativa y de prototipado r\u00e1pido que permite: conectar dispositivos IoT v\u00eda MQTT, visualizar datos en tiempo real, controlar actuadores mediante una interfaz gr\u00e1fica moderna.</p><p><span style=\" text-decoration: underline;\">Licencia</span></p><p>Proyecto desarrollado bajo licencia MIT. Compatible con PySide6 (LGPL), libre para proyectos comerciales o educativos.</p><p align=\"center\"><a href=\"https://github.com/lmtreser/mxtt\"><span style=\" font-weight:600; text-decoration: underline; color:#1d99f3;\">Proyecto en GitHub</span></a></p></body></html>", None))
         self.tab_broker.setTabText(self.tab_broker.indexOf(self.tab_about), QCoreApplication.translate("Form", u"About", None))
+        self.label_status.setText(QCoreApplication.translate("Form", u"MXTT MQTT Explorer", None))
     # retranslateUi
 
