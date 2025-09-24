@@ -9,6 +9,13 @@ class MXTTDriver:
     """
 
     def __init__(self, view, settings):
+        """
+        Inicializa el controlador MXTTDriver.
+
+        Args:
+            view: Objeto de la vista (UI) con los widgets de PySide6.
+            settings: Objeto encargado de guardar y cargar la configuración del broker.
+        """
         self.view = view
         self.settings = settings
         self.mqtt_client = None
@@ -25,7 +32,10 @@ class MXTTDriver:
 
     def show_feedback(self, text: str):
         """
-        Muestra feedback en label_status y lo borra después de 'timeout' ms.
+        Muestra feedback en label_status y lo borra después de 3 segundos.
+        
+        Args:
+            text (str): Texto de feedback para mostrar en la UI.
         """
         self.view.ui.label_status.setText(text)
         QTimer.singleShot(3000, lambda: self.view.ui.label_status.setText(""))
@@ -33,6 +43,9 @@ class MXTTDriver:
     def subscribe_to_topic(self):
         """
         Suscribe al cliente MQTT a un topic ingresado en el input correspondiente.
+        
+        Returns:
+            None
         """
         topic = self.view.ui.input_topic_1.text()
         if self.mqtt_client:
@@ -46,8 +59,13 @@ class MXTTDriver:
     def send_message(self):
         """
         Envía un mensaje al broker MQTT.
-        El input debe tener el formato: 'topic : payload'
-        También soporta 'topic:payload' sin espacios.
+
+        El input debe tener el formato:
+            - ``topic : payload``
+            - ``topic:payload`` (también soportado, sin espacios)
+
+        Returns:
+            None
         """
         message = self.view.ui.input_send_msg.text().strip()
         if ":" not in message:
@@ -69,6 +87,13 @@ class MXTTDriver:
         """
         Callback que se ejecuta al recibir un mensaje MQTT.
         Actualiza la lista de mensajes en la UI.
+
+        Args:
+            topic (str): Tópico del mensaje recibido.
+            payload (str): Contenido del mensaje recibido.
+
+        Returns:
+            None
         """
         self.view.ui.listView_msg.addItem(f"{topic} : {payload}")
         debug(f"[DRIVER] Received message \'{topic} : {payload}\'")
@@ -76,6 +101,9 @@ class MXTTDriver:
     def save_config(self):
         """
         Guarda la configuración del cliente en un archivo.
+        
+        Returns:
+            None
         """
         debug("[DRIVER] Saving config...")
         self.settings.save_broker(
@@ -89,7 +117,10 @@ class MXTTDriver:
         
     def load_config(self):
         """
-        Carga la configuración del cliente desde un archivo.
+        Carga la configuración del cliente desde un archivo y la aplica en la UI.
+
+        Returns:
+            None
         """
         debug("[SETTINGS] Loading config...")
         cfg_stored = self.settings.load_broker()
@@ -102,7 +133,10 @@ class MXTTDriver:
     def connect_to_broker(self):
         """
         Conecta al broker MQTT creando un hilo independiente (QThread).
-        Se configuran credenciales, puerto y TLS según la UI.
+        Se configuran credenciales, puerto y TLS según los valores de la UI.
+
+        Returns:
+            None
         """
         debug("[DRIVER] Connecting to broker MQTT")
         # ToDo: Validar inputs
@@ -120,7 +154,12 @@ class MXTTDriver:
         self.mqtt_client.start()
         
     def close(self):
-        """Cierra la conexión MQTT y detiene el hilo al cerrar la aplicación."""
+        """
+        Cierra la conexión MQTT y detiene el hilo al cerrar la aplicación.
+
+        Returns:
+            None
+        """
         debug("[DRIVER] Closing MXTTDriver.")
         if self.mqtt_client:
             self.mqtt_client.stop()
