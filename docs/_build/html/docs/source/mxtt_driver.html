@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mxtt_driver module &mdash; MXTT MQTT Explorer MIT documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7ea25c81"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MXTT MQTT Explorer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">mxtt_driver module</a><ul>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver"><code class="docutils literal notranslate"><span class="pre">MXTTDriver</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.close"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.close()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.connect_to_broker"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.connect_to_broker()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.load_config"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.load_config()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.save_config"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.save_config()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.send_message"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.send_message()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.show_feedback"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.show_feedback()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.subscribe_to_topic"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.subscribe_to_topic()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.update_message"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.update_message()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MXTT MQTT Explorer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">mxtt_driver module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/source/mxtt_driver.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-mxtt_driver">
+<span id="mxtt-driver-module"></span><h1>mxtt_driver module<a class="headerlink" href="#module-mxtt_driver" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_driver.</span></span><span class="sig-name descname"><span class="pre">MXTTDriver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controlador que conecta mxtt_ui con mxtt_paho.
+Maneja los eventos de los botones y actualiza la interfaz.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.close" title="Link to this definition"></a></dt>
+<dd><p>Cierra la conexión MQTT y detiene el hilo al cerrar la aplicación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.connect_to_broker">
+<span class="sig-name descname"><span class="pre">connect_to_broker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.connect_to_broker" title="Link to this definition"></a></dt>
+<dd><p>Conecta al broker MQTT creando un hilo independiente (QThread).
+Se configuran credenciales, puerto y TLS según los valores de la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.load_config">
+<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.load_config" title="Link to this definition"></a></dt>
+<dd><p>Carga la configuración del cliente desde un archivo y la aplica en la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.save_config" title="Link to this definition"></a></dt>
+<dd><p>Guarda la configuración del cliente en un archivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.send_message">
+<span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.send_message" title="Link to this definition"></a></dt>
+<dd><p>Envía un mensaje al broker MQTT.</p>
+<dl class="simple">
+<dt>El input debe tener el formato:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">topic</span> <span class="pre">:</span> <span class="pre">payload</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">topic:payload</span></code> (también soportado, sin espacios)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.show_feedback">
+<span class="sig-name descname"><span class="pre">show_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.show_feedback" title="Link to this definition"></a></dt>
+<dd><p>Muestra feedback en label_status y lo borra después de 3 segundos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Texto de feedback para mostrar en la UI.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.subscribe_to_topic">
+<span class="sig-name descname"><span class="pre">subscribe_to_topic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.subscribe_to_topic" title="Link to this definition"></a></dt>
+<dd><p>Suscribe al cliente MQTT a un topic ingresado en el input correspondiente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.update_message">
+<span class="sig-name descname"><span class="pre">update_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.update_message" title="Link to this definition"></a></dt>
+<dd><p>Callback que se ejecuta al recibir un mensaje MQTT.
+Actualiza la lista de mensajes en la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em>) – Tópico del mensaje recibido.</p></li>
+<li><p><strong>payload</strong> (<em>str</em>) – Contenido del mensaje recibido.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lucas Martin Treser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

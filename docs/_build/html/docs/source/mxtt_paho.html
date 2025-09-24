@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mxtt_paho module &mdash; MXTT MQTT Explorer MIT documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=7ea25c81"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MXTT MQTT Explorer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">mxtt_paho module</a><ul>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient"><code class="docutils literal notranslate"><span class="pre">MQTTClient</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.data_received"><code class="docutils literal notranslate"><span class="pre">MQTTClient.data_received</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_connect"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_connect()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_disconnect"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_disconnect()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_message"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_message()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.publish"><code class="docutils literal notranslate"><span class="pre">MQTTClient.publish()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.run"><code class="docutils literal notranslate"><span class="pre">MQTTClient.run()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.staticMetaObject"><code class="docutils literal notranslate"><span class="pre">MQTTClient.staticMetaObject</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.stop"><code class="docutils literal notranslate"><span class="pre">MQTTClient.stop()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.subscribe"><code class="docutils literal notranslate"><span class="pre">MQTTClient.subscribe()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MXTT MQTT Explorer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">mxtt_paho module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/source/mxtt_paho.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-mxtt_paho">
+<span id="mxtt-paho-module"></span><h1>mxtt_paho module<a class="headerlink" href="#module-mxtt_paho" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_paho.</span></span><span class="sig-name descname"><span class="pre">MQTTClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QThread</span></code></p>
+<p>Cliente MQTT ejecutado en un hilo independiente usando QThread.</p>
+<ul class="simple">
+<li><p>Maneja la conexión a un broker MQTT (con soporte TLS).</p></li>
+<li><p>Permite publicar y suscribirse a topics.</p></li>
+<li><p>Emite señales hacia la UI cada vez que se recibe un mensaje.</p></li>
+</ul>
+<dl class="simple">
+<dt>Señales:</dt><dd><dl class="simple">
+<dt>data_received (Signal): Emitida al recibir un mensaje MQTT.</dt><dd><p>Parámetros: (topic: str, payload: str)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.data_received">
+<span class="sig-name descname"><span class="pre">data_received</span></span><a class="headerlink" href="#mxtt_paho.MQTTClient.data_received" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_connect">
+<span class="sig-name descname"><span class="pre">on_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_connect" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al establecer conexión con el broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>flags</strong> – Flags de conexión.</p></li>
+<li><p><strong>reason_code</strong> (<em>int</em>) – Código de resultado de la conexión (0 = éxito).</p></li>
+<li><p><strong>properties</strong> – Propiedades MQTT v5 (opcional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_disconnect">
+<span class="sig-name descname"><span class="pre">on_disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disconnect_flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_disconnect" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al desconectarse del broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>disconnect_flags</strong> – Flags de desconexión.</p></li>
+<li><p><strong>reason_code</strong> (<em>int</em>) – Código de resultado de la desconexión (0 = solicitada, !=0 inesperada).</p></li>
+<li><p><strong>properties</strong> – Propiedades MQTT v5 (opcional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_message">
+<span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_message" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al recibir un mensaje de un topic suscrito.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>msg</strong> – Objeto mensaje MQTT (paho.MQTTMessage)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.publish">
+<span class="sig-name descname"><span class="pre">publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.publish" title="Link to this definition"></a></dt>
+<dd><p>Publica un mensaje en el broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em>) – Tópico donde publicar el mensaje.</p></li>
+<li><p><strong>payload</strong> (<em>str</em>) – Contenido del mensaje.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.run" title="Link to this definition"></a></dt>
+<dd><p>Hilo del cliente MQTT.</p>
+<ul class="simple">
+<li><p>Conecta al broker.</p></li>
+<li><p>Entra en loop_forever() para mantener la conexión activa.</p></li>
+<li><p>Hilo bloqueante.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QMetaObject(&quot;MQTTClient&quot;</span> <span class="pre">inherits</span> <span class="pre">&quot;QThread&quot;:</span> <span class="pre">Methods:</span>&#160;&#160; <span class="pre">#12</span> <span class="pre">type=Signal,</span> <span class="pre">signature=data_received(QString,QString),</span> <span class="pre">parameters=QString,</span> <span class="pre">QString</span> <span class="pre">)</span></em><a class="headerlink" href="#mxtt_paho.MQTTClient.staticMetaObject" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.stop" title="Link to this definition"></a></dt>
+<dd><p>Detiene el hilo y desconecta del broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.subscribe">
+<span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Se suscribe a un topic para recibir mensajes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>topic</strong> (<em>str</em>) – Tópico a suscribirse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lucas Martin Treser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

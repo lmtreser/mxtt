@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MXTT MQTT Explorer &mdash; MXTT MQTT Explorer MIT documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7ea25c81"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            MXTT MQTT Explorer
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">MXTT MQTT Explorer</a><ul>
+<li><a class="reference internal" href="#module-debug">Módulos</a><ul>
+<li><a class="reference internal" href="#debug.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
+<li><a class="reference internal" href="#debug.set_debug_callback"><code class="docutils literal notranslate"><span class="pre">set_debug_callback()</span></code></a></li>
+<li><a class="reference internal" href="#debug.timestamp_prefix"><code class="docutils literal notranslate"><span class="pre">timestamp_prefix()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver"><code class="docutils literal notranslate"><span class="pre">MXTTDriver</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.close"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.close()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.connect_to_broker"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.connect_to_broker()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.load_config"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.load_config()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.save_config"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.save_config()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.send_message"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.send_message()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.show_feedback"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.show_feedback()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.subscribe_to_topic"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.subscribe_to_topic()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_driver.MXTTDriver.update_message"><code class="docutils literal notranslate"><span class="pre">MXTTDriver.update_message()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mxtt_logger.MXTTLogger"><code class="docutils literal notranslate"><span class="pre">MXTTLogger</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_logger.MXTTLogger.log"><code class="docutils literal notranslate"><span class="pre">MXTTLogger.log()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_logger.MXTTLogger.set_enabled"><code class="docutils literal notranslate"><span class="pre">MXTTLogger.set_enabled()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mxtt_main.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_main.MainWindow.append_debug"><code class="docutils literal notranslate"><span class="pre">MainWindow.append_debug()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_main.MainWindow.closeEvent"><code class="docutils literal notranslate"><span class="pre">MainWindow.closeEvent()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_main.MainWindow.staticMetaObject"><code class="docutils literal notranslate"><span class="pre">MainWindow.staticMetaObject</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_main.MainWindow.toggle_file_logging"><code class="docutils literal notranslate"><span class="pre">MainWindow.toggle_file_logging()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient"><code class="docutils literal notranslate"><span class="pre">MQTTClient</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.data_received"><code class="docutils literal notranslate"><span class="pre">MQTTClient.data_received</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_connect"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_connect()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_disconnect"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_disconnect()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.on_message"><code class="docutils literal notranslate"><span class="pre">MQTTClient.on_message()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.publish"><code class="docutils literal notranslate"><span class="pre">MQTTClient.publish()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.run"><code class="docutils literal notranslate"><span class="pre">MQTTClient.run()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.staticMetaObject"><code class="docutils literal notranslate"><span class="pre">MQTTClient.staticMetaObject</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.stop"><code class="docutils literal notranslate"><span class="pre">MQTTClient.stop()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_paho.MQTTClient.subscribe"><code class="docutils literal notranslate"><span class="pre">MQTTClient.subscribe()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mxtt_settings.MXTTSettings"><code class="docutils literal notranslate"><span class="pre">MXTTSettings</span></code></a><ul>
+<li><a class="reference internal" href="#mxtt_settings.MXTTSettings.load_broker"><code class="docutils literal notranslate"><span class="pre">MXTTSettings.load_broker()</span></code></a></li>
+<li><a class="reference internal" href="#mxtt_settings.MXTTSettings.save_broker"><code class="docutils literal notranslate"><span class="pre">MXTTSettings.save_broker()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">MXTT MQTT Explorer</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">MXTT MQTT Explorer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mxtt-mqtt-explorer">
+<h1>MXTT MQTT Explorer<a class="headerlink" href="#mxtt-mqtt-explorer" title="Link to this heading"></a></h1>
+<p>Documentación generada automáticamente para los módulos de MXTT.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="module-debug">
+<span id="modulos"></span><h2>Módulos<a class="headerlink" href="#module-debug" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="debug.debug">
+<span class="sig-prename descclassname"><span class="pre">debug.</span></span><span class="sig-name descname"><span class="pre">debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#debug.debug" title="Link to this definition"></a></dt>
+<dd><p>Función de debug centralizada, compatible con UI y consola.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Mensajes o valores a mostrar.</p></li>
+<li><p><strong>**kwargs</strong> – Argumentos adicionales para <code class="docutils literal notranslate"><span class="pre">icecream.ic</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="debug.set_debug_callback">
+<span class="sig-prename descclassname"><span class="pre">debug.</span></span><span class="sig-name descname"><span class="pre">set_debug_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#debug.set_debug_callback" title="Link to this definition"></a></dt>
+<dd><p>Registra una función de callback para redirigir los mensajes de debug.
+:type callback: 
+:param callback: Función que recibe el mensaje de debug.
+:type callback: Callable[[str], None]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="debug.timestamp_prefix">
+<span class="sig-prename descclassname"><span class="pre">debug.</span></span><span class="sig-name descname"><span class="pre">timestamp_prefix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#debug.timestamp_prefix" title="Link to this definition"></a></dt>
+<dd><p>Genera un prefijo de timestamp para los mensajes de debug.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Hora actual en formato <a href="#id1"><span class="problematic" id="id2">``</span></a>[HH:MM:SS] <a href="#id3"><span class="problematic" id="id4">``</span></a>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class" id="module-mxtt_driver">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_driver.</span></span><span class="sig-name descname"><span class="pre">MXTTDriver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controlador que conecta mxtt_ui con mxtt_paho.
+Maneja los eventos de los botones y actualiza la interfaz.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.close" title="Link to this definition"></a></dt>
+<dd><p>Cierra la conexión MQTT y detiene el hilo al cerrar la aplicación.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.connect_to_broker">
+<span class="sig-name descname"><span class="pre">connect_to_broker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.connect_to_broker" title="Link to this definition"></a></dt>
+<dd><p>Conecta al broker MQTT creando un hilo independiente (QThread).
+Se configuran credenciales, puerto y TLS según los valores de la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.load_config">
+<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.load_config" title="Link to this definition"></a></dt>
+<dd><p>Carga la configuración del cliente desde un archivo y la aplica en la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.save_config" title="Link to this definition"></a></dt>
+<dd><p>Guarda la configuración del cliente en un archivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.send_message">
+<span class="sig-name descname"><span class="pre">send_message</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.send_message" title="Link to this definition"></a></dt>
+<dd><p>Envía un mensaje al broker MQTT.</p>
+<dl class="simple">
+<dt>El input debe tener el formato:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">topic</span> <span class="pre">:</span> <span class="pre">payload</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">topic:payload</span></code> (también soportado, sin espacios)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.show_feedback">
+<span class="sig-name descname"><span class="pre">show_feedback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.show_feedback" title="Link to this definition"></a></dt>
+<dd><p>Muestra feedback en label_status y lo borra después de 3 segundos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Texto de feedback para mostrar en la UI.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.subscribe_to_topic">
+<span class="sig-name descname"><span class="pre">subscribe_to_topic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.subscribe_to_topic" title="Link to this definition"></a></dt>
+<dd><p>Suscribe al cliente MQTT a un topic ingresado en el input correspondiente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_driver.MXTTDriver.update_message">
+<span class="sig-name descname"><span class="pre">update_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_driver.MXTTDriver.update_message" title="Link to this definition"></a></dt>
+<dd><p>Callback que se ejecuta al recibir un mensaje MQTT.
+Actualiza la lista de mensajes en la UI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em>) – Tópico del mensaje recibido.</p></li>
+<li><p><strong>payload</strong> (<em>str</em>) – Contenido del mensaje recibido.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-mxtt_logger">
+<dt class="sig sig-object py" id="mxtt_logger.MXTTLogger">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_logger.</span></span><span class="sig-name descname"><span class="pre">MXTTLogger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mxtt.log'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_logger.MXTTLogger" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Logger de debug opcional a archivo.</p>
+<p>Permite habilitar o deshabilitar el guardado de mensajes de debug
+en un archivo de texto con timestamp.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_logger.MXTTLogger.log">
+<span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_logger.MXTTLogger.log" title="Link to this definition"></a></dt>
+<dd><p>Si está habilitado, escribe el mensaje en el archivo con timestamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> (<em>str</em>) – Mensaje a registrar.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_logger.MXTTLogger.set_enabled">
+<span class="sig-name descname"><span class="pre">set_enabled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_logger.MXTTLogger.set_enabled" title="Link to this definition"></a></dt>
+<dd><p>Habilita o deshabilita el logging a archivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enabled</strong> (<em>bool</em>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> para habilitar, <code class="docutils literal notranslate"><span class="pre">False</span></code> para deshabilitar.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-mxtt_main">
+<dt class="sig sig-object py" id="mxtt_main.MainWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_main.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><a class="headerlink" href="#mxtt_main.MainWindow" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code></p>
+<p>Ventana principal de la aplicación MXTT.</p>
+<p>Integra la interfaz gráfica generada con Qt Designer, el controlador
+de MQTT, las configuraciones de la aplicación y el logger opcional.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_main.MainWindow.append_debug">
+<span class="sig-name descname"><span class="pre">append_debug</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_main.MainWindow.append_debug" title="Link to this definition"></a></dt>
+<dd><p>Agrega una línea al tab Debug y opcionalmente la guarda en archivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – Texto a mostrar en el panel de debug.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_main.MainWindow.closeEvent">
+<span class="sig-name descname"><span class="pre">closeEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_main.MainWindow.closeEvent" title="Link to this definition"></a></dt>
+<dd><p>Se ejecuta automáticamente al cerrar la ventana.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>event</strong> (<em>QCloseEvent</em>) – Evento de cierre de Qt.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mxtt_main.MainWindow.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QMetaObject(&quot;MainWindow&quot;</span> <span class="pre">inherits</span> <span class="pre">&quot;QWidget&quot;:</span> <span class="pre">)</span></em><a class="headerlink" href="#mxtt_main.MainWindow.staticMetaObject" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_main.MainWindow.toggle_file_logging">
+<span class="sig-name descname"><span class="pre">toggle_file_logging</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_main.MainWindow.toggle_file_logging" title="Link to this definition"></a></dt>
+<dd><p>Habilita o deshabilita el logging a archivo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>state</strong> (<em>int</em>) – Estado del checkbox (0 = desmarcado, distinto de 0 = marcado).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-mxtt_paho">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_paho.</span></span><span class="sig-name descname"><span class="pre">MQTTClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">QThread</span></code></p>
+<p>Cliente MQTT ejecutado en un hilo independiente usando QThread.</p>
+<ul class="simple">
+<li><p>Maneja la conexión a un broker MQTT (con soporte TLS).</p></li>
+<li><p>Permite publicar y suscribirse a topics.</p></li>
+<li><p>Emite señales hacia la UI cada vez que se recibe un mensaje.</p></li>
+</ul>
+<dl class="simple">
+<dt>Señales:</dt><dd><dl class="simple">
+<dt>data_received (Signal): Emitida al recibir un mensaje MQTT.</dt><dd><p>Parámetros: (topic: str, payload: str)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.data_received">
+<span class="sig-name descname"><span class="pre">data_received</span></span><a class="headerlink" href="#mxtt_paho.MQTTClient.data_received" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_connect">
+<span class="sig-name descname"><span class="pre">on_connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_connect" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al establecer conexión con el broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>flags</strong> – Flags de conexión.</p></li>
+<li><p><strong>reason_code</strong> (<em>int</em>) – Código de resultado de la conexión (0 = éxito).</p></li>
+<li><p><strong>properties</strong> – Propiedades MQTT v5 (opcional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_disconnect">
+<span class="sig-name descname"><span class="pre">on_disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disconnect_flags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_disconnect" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al desconectarse del broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>disconnect_flags</strong> – Flags de desconexión.</p></li>
+<li><p><strong>reason_code</strong> (<em>int</em>) – Código de resultado de la desconexión (0 = solicitada, !=0 inesperada).</p></li>
+<li><p><strong>properties</strong> – Propiedades MQTT v5 (opcional).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.on_message">
+<span class="sig-name descname"><span class="pre">on_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.on_message" title="Link to this definition"></a></dt>
+<dd><p>Callback ejecutado al recibir un mensaje de un topic suscrito.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> – Cliente MQTT (paho.Client)</p></li>
+<li><p><strong>userdata</strong> – Datos de usuario asociados al cliente.</p></li>
+<li><p><strong>msg</strong> – Objeto mensaje MQTT (paho.MQTTMessage)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.publish">
+<span class="sig-name descname"><span class="pre">publish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.publish" title="Link to this definition"></a></dt>
+<dd><p>Publica un mensaje en el broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> (<em>str</em>) – Tópico donde publicar el mensaje.</p></li>
+<li><p><strong>payload</strong> (<em>str</em>) – Contenido del mensaje.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.run" title="Link to this definition"></a></dt>
+<dd><p>Hilo del cliente MQTT.</p>
+<ul class="simple">
+<li><p>Conecta al broker.</p></li>
+<li><p>Entra en loop_forever() para mantener la conexión activa.</p></li>
+<li><p>Hilo bloqueante.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.staticMetaObject">
+<span class="sig-name descname"><span class="pre">staticMetaObject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">PySide6.QtCore.QMetaObject(&quot;MQTTClient&quot;</span> <span class="pre">inherits</span> <span class="pre">&quot;QThread&quot;:</span> <span class="pre">Methods:</span>&#160;&#160; <span class="pre">#12</span> <span class="pre">type=Signal,</span> <span class="pre">signature=data_received(QString,QString),</span> <span class="pre">parameters=QString,</span> <span class="pre">QString</span> <span class="pre">)</span></em><a class="headerlink" href="#mxtt_paho.MQTTClient.staticMetaObject" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.stop" title="Link to this definition"></a></dt>
+<dd><p>Detiene el hilo y desconecta del broker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_paho.MQTTClient.subscribe">
+<span class="sig-name descname"><span class="pre">subscribe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_paho.MQTTClient.subscribe" title="Link to this definition"></a></dt>
+<dd><p>Se suscribe a un topic para recibir mensajes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>topic</strong> (<em>str</em>) – Tópico a suscribirse.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-mxtt_settings">
+<dt class="sig sig-object py" id="mxtt_settings.MXTTSettings">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mxtt_settings.</span></span><span class="sig-name descname"><span class="pre">MXTTSettings</span></span><a class="headerlink" href="#mxtt_settings.MXTTSettings" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Clase para gestionar la configuración del broker MQTT usando QSettings.</p>
+<p>Permite guardar y cargar la configuración de conexión (URL, puerto, TLS, usuario, contraseña).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_settings.MXTTSettings.load_broker">
+<span class="sig-name descname"><span class="pre">load_broker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_settings.MXTTSettings.load_broker" title="Link to this definition"></a></dt>
+<dd><p>Carga la configuración del broker desde QSettings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Diccionario con la configuración, con claves:</dt><dd><ul class="simple">
+<li><p>’url’ (str)</p></li>
+<li><p>’port’ (int)</p></li>
+<li><p>’tls’ (bool)</p></li>
+<li><p>’username’ (str)</p></li>
+<li><p>’password’ (str)</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mxtt_settings.MXTTSettings.save_broker">
+<span class="sig-name descname"><span class="pre">save_broker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1883</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#mxtt_settings.MXTTSettings.save_broker" title="Link to this definition"></a></dt>
+<dd><p>Guarda la configuración actual del broker en QSettings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<em>str</em>) – Dirección del broker MQTT.</p></li>
+<li><p><strong>port</strong> (<em>int</em><em>, </em><em>optional</em>) – Puerto TCP. Por defecto 1883.</p></li>
+<li><p><strong>tls</strong> (<em>bool</em><em>, </em><em>optional</em>) – True para habilitar TLS. Por defecto False.</p></li>
+<li><p><strong>username</strong> (<em>str</em><em>, </em><em>optional</em>) – Nombre de usuario para autenticación. Por defecto cadena vacía.</p></li>
+<li><p><strong>password</strong> (<em>str</em><em>, </em><em>optional</em>) – Contraseña para autenticación. Por defecto cadena vacía.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Lucas Martin Treser.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
