@@ -1,6 +1,6 @@
 # Issues
 
-Reportar incidencias vía [GitHub Issus][https://github.com/lmtreser/mxtt/issues].
+Reportar incidencias vía [GitHub Issues](https://github.com/lmtreser/mxtt/issues).
 
 | Fecha      | Sistema Operativo | Error                                                                       | Status |
 |------------|-------------------|-----------------------------------------------------------------------------|--------|
