@@ -1,3 +1,4 @@
+from PySide6.QtCore import QTimer
 from mxtt_paho import MQTTClient
 from debug import debug
 
@@ -22,6 +23,13 @@ class MXTTDriver:
         # Cargar configuración guardada
         self.load_config()
 
+    def show_feedback(self, text: str):
+        """
+        Muestra feedback en label_status y lo borra después de 'timeout' ms.
+        """
+        self.view.ui.label_status.setText(text)
+        QTimer.singleShot(3000, lambda: self.view.ui.label_status.setText(""))
+
     def subscribe_to_topic(self):
         """
         Suscribe al cliente MQTT a un topic ingresado en el input correspondiente.
@@ -29,8 +37,10 @@ class MXTTDriver:
         topic = self.view.ui.input_topic_1.text()
         if self.mqtt_client:
             self.mqtt_client.subscribe(topic)
+            self.show_feedback(f"Subscribed to: {topic}")
             debug(f"[DRIVER] Subscribed to topic \'{topic}\'")
         else:
+            self.show_feedback("Not connected to broker.")
             debug("[DRIVER] Cannot subscribe, MQTT client not connected.")
     
     def send_message(self):
@@ -41,6 +51,7 @@ class MXTTDriver:
         """
         message = self.view.ui.input_send_msg.text().strip()
         if ":" not in message:
+            self.show_feedback("Invalid format. Use: 'topic : payload'")
             debug("[DRIVER] Formato inválido. Usa: 'topic : payload'")
             return
         
@@ -48,8 +59,10 @@ class MXTTDriver:
         
         if self.mqtt_client:
             self.mqtt_client.publish(topic, payload)
+            self.show_feedback(f"Sent to {topic}: {payload}")
             debug(f"[DRIVER] Sent message \'{topic} : {payload}\'")
         else:
+            self.show_feedback("Not connected to broker.")
             debug("[DRIVER] Cannot send message, MQTT client not connected.")
     
     def update_message(self, topic, payload):
@@ -72,7 +85,8 @@ class MXTTDriver:
             username=self.view.ui.input_user.text(),
             password=self.view.ui.input_password.text()
         )
-    
+        self.show_feedback("Configuration saved.")
+        
     def load_config(self):
         """
         Carga la configuración del cliente desde un archivo.
@@ -99,6 +113,7 @@ class MXTTDriver:
             password=self.view.ui.input_password.text(),
             use_tls=self.view.ui.check_tls.isChecked()
         )
+        self.show_feedback("Connecting to broker...")
         debug(f"[DRIVER] Client created: {self.mqtt_client}")
         debug("[DRIVER] Attempting start thread...")
         self.mqtt_client.data_received.connect(self.update_message)
