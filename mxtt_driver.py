@@ -37,11 +37,15 @@ class MXTTDriver:
         """
         Envía un mensaje al broker MQTT.
         El input debe tener el formato: 'topic : payload'
+        También soporta 'topic:payload' sin espacios.
         """
-        # ToDo: Validar input
-        message = self.view.ui.input_send_msg.text()
-        topic = message.split(" : ")[0]
-        payload = message.split(" : ")[1]
+        message = self.view.ui.input_send_msg.text().strip()
+        if ":" not in message:
+            debug("[DRIVER] Formato inválido. Usa: 'topic : payload'")
+            return
+        
+        topic, payload = map(str.strip, message.split(":", 1))
+        
         if self.mqtt_client:
             self.mqtt_client.publish(topic, payload)
             debug(f"[DRIVER] Sent message \'{topic} : {payload}\'")
