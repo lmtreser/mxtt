@@ -94,8 +94,11 @@ Muestra información general sobre la aplicación:
 
 ## ToDo
 
-- [] Documentar
-- [] Validar inputs
+- [ ] Validar inputs
+- [ ] Agregar botón de desconexión
+- [ ] Permitir guardar varios brokers
+- [ ] Hashear password
+- [-] Documentar
 
 ## Contribuciones
 
